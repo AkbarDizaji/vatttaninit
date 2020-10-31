@@ -1,0 +1,260 @@
+.bFlipText-wrapper {
+    position:relative;
+    font: normal 11px "Helvetica Neue", Helvetica, sans-serif;
+    -webkit-user-select: none;
+}
+.bFlipText-wrapper *{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.bFlipText-wrapper ul{
+    position: relative;
+    display:inline-block;
+    padding:0;
+    margin: 5px;
+    list-style:none; 
+    border-radius: 6px;
+    background: transparent;
+}
+.bFlipText-wrapper ul li{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.bFlipText-wrapper ul li > div {
+    display: block;
+    height: 100%;
+    overflow: visible;
+}
+.bFlipText-wrapper ul li .up,.bFlipText-wrapper ul li .down{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    overflow: hidden; 
+}
+.bFlipText-wrapper ul li .up {
+    top: 0;
+    /* this for below animation rotate transform */
+    -webkit-transform-origin: 50% 100%;
+    -moz-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    -o-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+}
+.bFlipText-wrapper ul li .down {
+    bottom: 0;
+    -webkit-transform-origin: 50% 0;
+    -moz-transform-origin: 50% 0;
+    -ms-transform-origin: 50% 0;
+    -o-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+}
+/*the line cut up & down part*/
+.bFlipText-wrapper ul li .up:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 1px;
+    margin-top:-1px;
+    background-color: #000;
+    opacity:0.4;
+}
+
+
+.bFlipText-wrapper ul li .shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.bFlipText-wrapper ul li .inn {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    text-shadow: 0 1px 2px #000;
+    text-align: center;
+    border-radius: 6px;
+}
+.bFlipText-wrapper ul li .up .inn {top: 0;}
+.bFlipText-wrapper ul li .down .inn {bottom: 0; }
+
+
+/* PLAY */
+.bFlipText-wrapper ul.play li.bFlipText-before {z-index: 3;}
+.bFlipText-wrapper ul{
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.bFlipText-wrapper ul.play li.bFlipText-active {
+    -webkit-animation: chng_char 0.5s linear 0.5s both;
+    -moz-animation: chng_char 0.5s linear 0.5s both;
+    animation: chng_char 0.5s linear 0.5s both;
+    z-index: 5;
+}
+@-webkit-keyframes chng_char {
+    0% {z-index: 2;}
+    20% {z-index: 4;}
+    100% {z-index: 4;}
+}
+@-moz-keyframes chng_char {
+    0% {z-index: 2;}
+    20% {z-index: 4;}
+    100% {z-index: 4;}
+}
+@-o-keyframes chng_char {
+    0% {z-index: 2;}
+    20% {z-index: 4;}
+    100% {z-index: 4;}
+}
+@keyframes chng_char {
+    0% {z-index: 2;}
+    20% {z-index: 4;}
+    100% {z-index: 4;}
+}
+
+
+.bFlipText-wrapper ul.play li.bFlipText-before .up{
+    z-index: 2;
+    -webkit-animation: up_rotat 0.5s linear both;
+    -moz-animation: up_rotat 0.5s linear both;
+    animation: up_rotat 0.5s linear both;
+}
+@-webkit-keyframes up_rotat {
+    0% {-webkit-transform: rotateX(0deg);}
+    100% {-webkit-transform: rotateX(-90deg);}
+}
+@-moz-keyframes up_rotat {
+    0% {-moz-transform: rotateX(0deg);}
+    100% {-moz-transform: rotateX(-90deg);}
+}
+@-o-keyframes up_rotat {
+    0% {-o-transform: rotateX(0deg);}
+    100% {-o-transform: rotateX(-90deg);}
+}
+@keyframes up_rotat {
+    0% {transform: rotateX(0deg);}
+    100% {transform: rotateX(-90deg);}
+}
+
+
+.bFlipText-wrapper ul.play li.bFlipText-active .down{
+    z-index: 2;
+    -webkit-animation: down_rotat 0.5s linear 0.5s  both;
+    -moz-animation: down_rotat 0.5s linear 0.5s  both;
+    animation: down_rotat 0.5s linear 0.5s  both;
+}
+@-webkit-keyframes down_rotat {
+    0% {-webkit-transform: rotateX(90deg);}
+    100% {-webkit-transform: rotateX(0deg);}
+}
+@-moz-keyframes down_rotat {
+    0% {-moz-transform: rotateX(90deg);}
+    100% {-moz-transform: rotateX(0deg);}
+}
+@-o-keyframes down_rotat {
+    0% {-o-transform: rotateX(90deg);}
+    100% {-o-transform: rotateX(0deg);}
+}
+@keyframes down_rotat {
+    0% {transform: rotateX(90deg);}
+    100% {transform: rotateX(0deg);}
+}
+
+.bFlipText-wrapper ul li.bFlipText-active {z-index: 3; }
+
+/* Shadow Before Hide*/
+.bFlipText-wrapper ul.play li.bFlipText-before .up .shadow {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, black 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.1)), color-stop(100%, black));
+    background: linear, top, rgba(0, 0, 0, 0.1) 0%, black 100%;
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, black 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, black 100%);
+    background: linear, to bottom, rgba(0, 0, 0, 0.1) 0%, black 100%;
+    -webkit-animation: shdow_show 0.5s linear both;
+    -moz-animation: shdow_show 0.5s linear both;
+    animation: shdow_show 0.5s linear both;
+}
+.bFlipText-wrapper ul.play li.bFlipText-before .down .shadow {
+    background: -moz-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, black), color-stop(100%, rgba(0, 0, 0, 0.1)));
+    background: linear, top, black 0%, rgba(0, 0, 0, 0.1) 100%;
+    background: -o-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.1) 100%);
+    background: -ms-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.1) 100%);
+    background: linear, to bottom, black 0%, rgba(0, 0, 0, 0.1) 100%;
+    -webkit-animation: shdow_show 0.5s linear both;
+    -moz-animation: shdow_show 0.5s linear both;
+    animation: shdow_show 0.5s linear both;
+}
+
+/* Shadow Active Show*/
+.bFlipText-wrapper ul.play li.bFlipText-active .up .shadow {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, black 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.1)), color-stop(100%, black));
+    background: linear, top, rgba(0, 0, 0, 0.1) 0%, black 100%;
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, black 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, black 100%);
+    background: linear, to bottom, rgba(0, 0, 0, 0.1) 0%, black 100%;
+    -webkit-animation: shdow_hide 0.5s linear 0.3s both;
+    -moz-animation: shdow_hide 0.5s linear 0.3s both;
+    animation: shdow_hide 0.5s linear 0.3s both;
+}
+
+.bFlipText-wrapper ul.play li.bFlipText-active .down .shadow {
+    background: -moz-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, black), color-stop(100%, rgba(0, 0, 0, 0.1)));
+    background: linear, top, black 0%, rgba(0, 0, 0, 0.1) 100%;
+    background: -o-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.1) 100%);
+    background: -ms-linear-gradient(top, black 0%, rgba(0, 0, 0, 0.1) 100%);
+    background: linear, to bottom, black 0%, rgba(0, 0, 0, 0.1) 100%;
+    -webkit-animation: shdow_hide 0.5s linear 0.3s both;
+    -moz-animation: shdow_hide 0.5s linear 0.3s both;
+    animation: shdow_hide 0.5s linear 0.3s both;
+}
+
+@-webkit-keyframes shdow_show{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@-moz-keyframes shdow_show{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@-o-keyframes shdow_show{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes shdow_show{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@-webkit-keyframes shdow_hide{
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+@-moz-keyframes shdow_hide{
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+@-o-keyframes shdow_hide{
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+@keyframes shdow_hide{
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
