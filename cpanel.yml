@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home3/vatttanw/public_html/
-    - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp * $DEPLOYPATH
